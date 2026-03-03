@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CarSearch</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 py-4 shadow-sm mb-8">
+      <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+        <%= link_to root_path, class: "text-2xl font-black tracking-tighter" do %>
+          Car<span class="text-blue-600">Market</span>
+        <% end %>
+
+        <div class="flex space-x-6 items-center">
+          <%= link_to "Homepage", root_path, class: "text-sm font-bold text-gray-500 hover:text-blue-600 transition" %>
+          <%= link_to "All cars", cars_path, class: "text-sm font-bold text-gray-500 hover:text-blue-600 transition" %>
+          <%= link_to "Search", search_cars_path, class: "text-sm font-bold text-gray-500 hover:text-blue-600 transition" %>
+          
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4">
+      <%= yield %>
+    </main>
+  </body>
+</html>

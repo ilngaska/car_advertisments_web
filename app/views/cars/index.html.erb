@@ -1,0 +1,60 @@
+<div class="max-w-6xl mx-auto px-4 py-8">
+  <div class="flex justify-between items-end mb-6">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-900">Car Listings</h1>
+      <p class="text-sm text-gray-500 mt-2">
+        Showing <%= @pagy.from %>-<%= @pagy.to %> of <%= @pagy.count %> results
+      </p>
+    </div>
+    
+    <div class="text-right space-y-2">
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-gray-600">Sort by:</span>
+        <%= select_tag :sort, options_for_select([
+          ['Newest First', 'date_added_desc'],
+          ['Price: Low to High', 'price_asc'],
+          ['Price: High to Low', 'price_desc']
+        ], params[:sort]), 
+        class: "border-gray-300 rounded text-sm p-1 bg-white focus:ring-blue-500",
+        onchange: "window.location.href = window.location.pathname + '?sort=' + this.value" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Make & Model</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Year</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Price</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Mileage</th>
+          <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Date</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% @cars.each do |car| %>
+          <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">
+              <%= "#{car.make} #{car.model}" %>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-600"><%= car.year %></td>
+            <td class="px-6 py-4 text-sm font-bold text-gray-900">
+              <%= number_to_currency(car.price, unit: "$", precision: 0) %>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-600">
+              <%= number_with_delimiter(car.odometer) %> km
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-400">
+              <%= car.date_added.respond_to?(:strftime) ? car.date_added.strftime("%b %d, %Y") : car.date_added %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-8 flex justify-center">
+    <%== pagy_nav(@pagy) %>
+  </div>
+</div>
