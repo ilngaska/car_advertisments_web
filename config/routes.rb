@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "home#index"
-  
-  resources :cars, only: [:index, :show] do
+
+  resources :cars, only: [ :index, :show ] do
     collection do
-      get 'search'
+      get "search"
     end
   end
 end
