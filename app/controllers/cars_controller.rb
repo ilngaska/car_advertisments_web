@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class CarsController < ApplicationController
-  include Pagy::Backend
-
   helper_method :car_params
+  include Pagy::Backend
 
   def index
     all_cars = Car.all.map { |car| car.attributes.with_indifferent_access }
