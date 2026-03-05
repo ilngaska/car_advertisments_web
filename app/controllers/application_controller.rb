@@ -1,8 +1,19 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Pagy::Backend
+  helper_method :current_user, :logged_in?
 
-  allow_browser versions: :modern
-  stale_when_importmap_changes
+  def current_user
+    return unless session[:user_email]
+
+    if defined?(@current_user)
+      @current_user
+    else
+      @current_user = User.find_by(email: session[:user_email])
+    end
+  end
+
+  def logged_in?
+    current_user.present?
+  end
 end

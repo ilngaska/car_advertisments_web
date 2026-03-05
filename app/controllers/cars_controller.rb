@@ -10,9 +10,16 @@ class CarsController < ApplicationController
     filtered_results = apply_filters(prepared_cars, car_params)
     @sorted_cars = sort_results(filtered_results)
     @pagy, @cars = pagy_array(@sorted_cars)
+
+    handle_user_history if logged_in?
   end
 
   private
+
+  def handle_user_history
+    UserManager.new.add_search_to_history(current_user.email, car_params)
+    current_user.history
+  end
 
   def car_params
     params.permit(:make, :model, :year_from, :year_to, :price_from, :price_to, :sort)
@@ -26,7 +33,6 @@ class CarsController < ApplicationController
     rescue StandardError
       Date.new(1900, 1, 1)
     end
-
     c[:year] = c[:year].to_i
     c[:price] = c[:price].to_i
     c
@@ -61,12 +67,10 @@ class CarsController < ApplicationController
     parts = sort_val.split('_')
     direction = parts.pop
     column = parts.join('_')
-
     sorted = data.sort_by do |car|
       val = car[column]
       val.is_a?(Date) ? val.to_time.to_i : val.to_i
     end
-
     direction == 'desc' ? sorted.reverse : sorted
   end
 end

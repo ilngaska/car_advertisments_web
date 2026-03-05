@@ -1,0 +1,77 @@
+---
+- :email: amsm6530@gmail.com
+  :password: "$2a$12$j.oe4ah5zgAu0ITsbj3bHuNhl051NkjR29XsprwHTDKWoOZjI.FM."
+  :role: admin
+  :history:
+  - :timestamp: '2026-01-22 22:03:59'
+    :query:
+      :make: Ford
+      :model: Fiesta
+      :year_to: '2023'
+  - :timestamp: '2026-01-23 11:33:34'
+    :query:
+      :make: Ford
+      :model: Fiat
+  - :timestamp: '2026-01-23 11:41:03'
+    :query:
+      :make: Ford
+      :model: Fiat
+      :year_from: '2010'
+  - :timestamp: '2026-01-23 13:35:44'
+    :query:
+      :make: Lada
+      :model: Sedan
+      :year_to: '2016'
+      :price_from: '5000'
+      :price_to: '10000'
+  - :timestamp: '2026-01-23 13:38:13'
+    :query:
+      :make: Lada
+      :model: Kalina
+      :year_from: '2009'
+      :year_to: '2017'
+      :price_from: '5000'
+      :price_to: '10000'
+  - :timestamp: '2026-01-23 14:05:37'
+    :query:
+      :make: BMW
+  - :timestamp: '2026-01-23 14:36:27'
+    :query:
+      :make: Ford
+      :year_from: '1900'
+      :year_to: '2030'
+  - :timestamp: '2026-02-13 10:54:28'
+    :query:
+      :make: Jeep
+      :price_from: '1000'
+  - :timestamp: '2026-02-13 10:54:50'
+    :query:
+      :make: BMW
+  - :timestamp: '2026-02-13 10:56:06'
+    :query:
+      :make: Chevrolet
+      :model: Camaro
+      :year_from: '2010'
+      :year_to: '2024'
+      :price_from: '1000'
+      :price_to: '100000'
+- :email: test1234@gmail.com
+  :role: user
+  :history:
+  - :timestamp: '2026-02-09 14:17:38'
+    :query:
+      :make: Toyota
+      :model: Corolla
+      :year_from: '2010'
+      :price_from: '1000'
+  - :timestamp: '2026-02-09 14:17:54'
+    :query:
+      :make: Toyota
+  - :timestamp: '2026-02-09 14:19:04'
+    :query:
+      :make: Toyota
+  :password: "$2a$12$69IPRdO.iqol/M5yuJ4jz.2h0hnsSCMlx3VXob8Qz6PcxAcl2t.C2"
+- :email: test1235@gmail.com
+  :role: user
+  :history: []
+  :password: "$2a$12$rmfdleBN2YQY2Kyze.6Noux83/wdK0JYQ.wCwKTLtWMGvPJkURupi"
