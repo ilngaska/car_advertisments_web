@@ -18,13 +18,10 @@ users_data.each do |user_attrs|
 
   user = User.new(
     email: data['email'],
-    password_digest: data['password'], # Беремо хеш з файлу
+    password_digest: data['password'],
     role: data['role'] || 'user',
     history: data['history'] || []
   )
 
-  # Зберігаємо без валідацій, щоб обійти перевірку пароля (has_secure_password)
   user.save!(validate: false)
 end
-
-Rails.logger.debug 'Юзери (з поштою та паролями) успішно завантажені! 🚀'
