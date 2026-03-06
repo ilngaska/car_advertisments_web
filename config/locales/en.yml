@@ -1,4 +1,14 @@
 en:
+  general:
+    welcome: "Welcome to Car Advertisements Web"
+    welc_message: "Browse, search, and manage car advertisements. This is a simple learning project demonstrating basic CRUD operations and authentication patterns."
+    browse: "Browse Cars"
+    browse_message: "View all car advertisements with sorting and pagination"
+    search_message: "Find specific cars using advanced search filters"
+    signup_message: "Sign up to save searches and manage your preferences"
+    help_message: "Learn how to use the platform and find answers to common questions"
+    about: "About This Project"
+    about_message: "This is a reference implementation for learning Ruby on Rails with a Tailwind CSS frontend. The UI is intentionally minimal to focus on functionality."
   nav:
     home: "Home"
     cars: "Cars"
@@ -56,9 +66,12 @@ en:
     email: "Email Address"
     password: "Password"
     submit: "Login"
+    confirm: "Confirm password"
+    signup: "Sign Up"
   alerts:
     login_required: "Please log in to see your history."
     login_success: "You logged in successfully!"
+    signup_success: "You signed up successfully!"
     logout_success: "You logged out successfully."
     invalid_auth: "Incorrect email or password."
   common:

@@ -38,7 +38,7 @@ class UserManager
   def save_history_entry(user, clean_query)
     user.history ||= []
     user.history << {
-      timestamp: Time.current.strftime('%Y-%m-%d %H:%M:%S'),
+      timestamp: Time.current.strftime(TIME_NOW),
       query: clean_query
     }
     user.save
