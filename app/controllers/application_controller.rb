@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user.present?
   end
+
+  def require_login
+    return if logged_in?
+
+    redirect_to login_path, alert: t('alerts.login_required')
+  end
 end
