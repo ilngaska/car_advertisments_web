@@ -1,54 +1,61 @@
-<div class="max-w-6xl mx-auto px-4 py-12">
+<div class="max-w-6xl mx-auto px-4 py-12 text-black">
   <div class="flex justify-between items-end mb-8">
     <div>
       <h1 class="text-3xl font-bold text-gray-900"><%= t('listings.title') %></h1>
-      <p class="text-gray-500"><%= t('listings.found', count: @pagy.count) %></p>
+      <% if @pagy.present? %>
+        <p class="text-gray-500"><%= t('listings.found', count: @pagy.count) %></p>
+      <% end %>
     </div>
     <%= link_to t('listings.advanced_search'), search_cars_path, class: "text-blue-600 font-semibold hover:underline" %>
   </div>
 
   <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
     <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
+      <thead class="bg-gray-50 font-semibold text-gray-600">
         <tr>
-          <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider"><%= t('listings.table.make_model') %></th>
-          
-          <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <%= link_to cars_path(car_params.merge(sort: params[:sort] == 'year_asc' ? 'year_desc' : 'year_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
+          <th class="px-6 py-4 text-left text-xs uppercase tracking-wider"><%= t('listings.table.make_model') %></th>
+          <th class="px-6 py-4 text-left text-xs uppercase tracking-wider">
+             <%= link_to cars_path(car_params.merge(sort: params[:sort] == 'year_asc' ? 'year_desc' : 'year_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
               <%= t('listings.table.year') %> <%= params[:sort]&.start_with?('year') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
-
-          <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <%= link_to cars_path(car_params.merge(sort: params[:sort] == 'price_asc' ? 'price_desc' : 'price_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
+          <th class="px-6 py-4 text-left text-xs uppercase tracking-wider">
+             <%= link_to cars_path(car_params.merge(sort: params[:sort] == 'price_asc' ? 'price_desc' : 'price_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
               <%= t('listings.table.price') %> <%= params[:sort]&.start_with?('price') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
-
-          <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <%= link_to cars_path(car_params.merge(sort: params[:sort] == 'date_added_asc' ? 'date_added_desc' : 'date_added_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
-              <%= t('listings.table.date_added') %> <%= params[:sort]&.start_with?('date_added') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
+          <th class="px-6 py-4 text-left text-xs uppercase tracking-wider"><%= t('listings.table.odometer') %></th>
+          <th class="px-6 py-4 text-left text-xs uppercase tracking-wider">
+            <%# Сортуємо по created_at, бо воно гарантовано є у всіх нових записів %>
+            <%= link_to cars_path(car_params.merge(sort: params[:sort] == 'created_at_asc' ? 'created_at_desc' : 'created_at_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
+              <%= t('listings.table.date_added') %> <%= params[:sort]&.start_with?('created_at') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
         </tr>
       </thead>
+      
       <tbody class="bg-white divide-y divide-gray-200">
         <% @cars.each do |car| %>
           <tr class="hover:bg-gray-50 transition">
             <td class="px-6 py-4 text-sm font-bold text-gray-900"><%= car['make'] %> <%= car['model'] %></td>
             <td class="px-6 py-4 text-sm text-gray-600"><%= car['year'] %></td>
             <td class="px-6 py-4 text-sm font-extrabold text-blue-700"><%= number_to_currency(car['price'], precision: 0, unit: "$") %></td>
-            <td class="px-6 py-4 text-sm text-gray-400">
-              <%= car['date_added'].is_a?(Time) ? car['date_added'].strftime("%b %d, %Y") : car['date_added'] %>
+            <td class="px-6 py-4 text-sm text-gray-600">
+              <%= number_with_delimiter(car['odometer']) %> km
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+                <%= car['date_added'].to_date.strftime("%b %d, %Y") rescue "—" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-center">
-      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-    </div>
+    <% if @pagy && @pagy.pages > 1 %>
+      <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-center">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
   </div>
 
   <%= link_to t('common.back_home'), root_path, class: "text-blue-600 font-bold hover:underline" %>

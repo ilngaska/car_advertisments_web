@@ -69,10 +69,23 @@ en:
     confirm: "Confirm password"
     signup: "Sign Up"
   alerts:
-    login_required: "Please log in to see your history."
+    login_required: "Please log in to access this feature."
     login_success: "You logged in successfully!"
     signup_success: "You signed up successfully!"
     logout_success: "You logged out successfully."
     invalid_auth: "Incorrect email or password."
+    not_found: "Car not found."
+    access_denied: "Access denied!"
   common:
     back_home: "← Back to Home page"
+  admin:
+    title: "Admin Panel - Inventory"
+    add_new: "Add New Car"
+    edit: "Edit"
+    delete: "Delete"
+    messages:
+      created: "Car created successfully!"
+      updated: "Car updated!"
+      deleted: "Car removed."
+      
+      

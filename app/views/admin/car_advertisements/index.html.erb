@@ -1,0 +1,52 @@
+<div class="flex justify-between items-center mb-8">
+  <h1 class="text-3xl font-bold text-gray-900"><%= t('admin.title') %></h1>
+  <%= link_to t('admin.add_new'), new_admin_car_advertisement_path, class: "bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition" %>
+</div>
+
+<div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden text-black">
+  <table class="w-full text-left">
+    <thead class="bg-gray-50 border-b border-gray-200 font-semibold text-gray-700">
+      <tr>
+        <th class="px-6 py-4 text-sm uppercase">Car</th>
+        <th class="px-6 py-4 text-sm uppercase">Price</th>
+        <th class="px-6 py-4 text-sm uppercase">Odometer</th>
+        <th class="px-6 py-4 text-sm uppercase">Date Added</th> <%# Додав заголовок %>
+        <th class="px-6 py-4 text-right text-sm uppercase">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <% @cars.each do |car| %>
+        <tr class="hover:bg-gray-50 transition">
+          <td class="px-6 py-4">
+            <span class="font-bold text-gray-900"><%= car.make %> <%= car.model %></span>
+            <span class="text-xs text-gray-400 ml-2"><%= car.year %></span>
+          </td>
+          
+          <td class="px-6 py-4 font-mono text-green-600 font-semibold">
+            $<%= number_with_delimiter(car.price) %>
+          </td>
+          
+          <td class="px-6 py-4 text-gray-600">
+            <%= number_with_delimiter(car.odometer) %> km
+          </td>
+
+          <%# Ось тут ми виправляємо дату %>
+          <td class="px-6 py-4 text-gray-500 text-sm">
+            <%= car.created_at.present? ? car.created_at.strftime("%Y-%m-%d") : Time.current.strftime("%Y-%m-%d") %>
+          </td>
+
+          <td class="px-6 py-4 text-right">
+            <div class="flex justify-end items-center space-x-4">
+              <%= link_to t('admin.edit'), edit_admin_car_advertisement_path(car), class: "text-blue-600 hover:underline font-medium" %>
+            
+              <%= button_to t('admin.delete'), admin_car_advertisement_path(car), 
+                  method: :delete, 
+                  form: { data: { turbo_confirm: t('admin.confirm'), turbo: false } }, 
+                  class: "text-red-600 hover:text-red-800 font-medium bg-transparent border-none cursor-pointer p-0" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

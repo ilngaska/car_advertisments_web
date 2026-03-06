@@ -16,4 +16,8 @@ Rails.application.routes.draw do
 
   get 'history', to: 'pages#history', as: :history
   get 'help',    to: 'pages#help',    as: :help
+
+  namespace :admin do
+    resources :car_advertisements
+  end
 end
