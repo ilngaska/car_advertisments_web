@@ -9,6 +9,10 @@ class CarsController < ApplicationController
     @cars_query = Cars::Searcher.call(car_params)
     @cars_query = Cars::Sorter.call(@cars_query, params[:sort])
     @pagy, @cars = pagy(@cars_query)
+
+    return unless params[:car].present? && session[:user_email]
+
+    UserManager.new.add_search_to_history(session[:user_email], car_params)
   end
 
   private

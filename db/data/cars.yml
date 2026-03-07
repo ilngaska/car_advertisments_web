@@ -176,3 +176,163 @@
   price: 30234
   description: Nice car.
   date_added: '2026-02-13'
+- id: T023-Passat-15
+  make: Volkswagen
+  model: Passat
+  year: 2015
+  odometer: 98745
+  price: 12500
+  description: Well maintained, one owner.
+  date_added: '2026-02-20'
+- id: N024-Civic-19
+  make: Nissan
+  model: Civic
+  year: 2019
+  odometer: 45210
+  price: 16890
+  description: Fuel efficient and reliable.
+  date_added: '2026-02-20'
+- id: H025-Pilot-18
+  make: Honda
+  model: Pilot
+  year: 2018
+  odometer: 81230
+  price: 21950
+  description: Spacious family SUV with service history.
+  date_added: '2026-02-21'
+- id: S026-Focus-14
+  make: Ford
+  model: Focus
+  year: 2014
+  odometer: 143900
+  price: 7499
+  description: Comfortable commuter car, recent brakes.
+  date_added: '2026-02-21'
+- id: K027-Rogue-20
+  make: Kia
+  model: Rogue
+  year: 2020
+  odometer: 39700
+  price: 19995
+  description: Low miles, clean interior.
+  date_added: '2026-02-22'
+- id: L028-Charger-17
+  make: Dodge
+  model: Charger
+  year: 2017
+  odometer: 67400
+  price: 23400
+  description: Powerful V6, sport package.
+  date_added: '2026-02-22'
+- id: M029-Mustang-16
+  make: Mercury
+  model: Mustang
+  year: 2016
+  odometer: 88900
+  price: 18750
+  description: Eye-catching coupe, aftermarket exhaust.
+  date_added: '2026-02-23'
+- id: V030-Altima-21
+  make: Volvo
+  model: Altima
+  year: 2021
+  odometer: 28900
+  price: 21400
+  description: Modern safety features, one owner.
+  date_added: '2026-02-23'
+- id: P031-Outback-15
+  make: Subaru
+  model: Outback
+  year: 2015
+  odometer: 102300
+  price: 13900
+  description: AWD, excellent for winter.
+  date_added: '2026-02-24'
+- id: U032-Tahoe-13
+  make: Chevrolet
+  model: Tahoe
+  year: 2013
+  odometer: 151200
+  price: 15950
+  description: Strong tow package, recently serviced.
+  date_added: '2026-02-24'
+- id: G033-Sonata-18
+  make: Genesis
+  model: Sonata
+  year: 2018
+  odometer: 67840
+  price: 17200
+  description: Luxury trim, leather seats.
+  date_added: '2026-02-25'
+- id: R034-Explorer-12
+  make: Renault
+  model: Explorer
+  year: 2012
+  odometer: 164500
+  price: 8200
+  description: Reliable daily driver, needs minor cosmetic work.
+  date_added: '2026-02-25'
+- id: Q035-Fiesta-11
+  make: Ford
+  model: Fiesta
+  year: 2011
+  odometer: 132400
+  price: 4999
+  description: Economical city car, ideal for students.
+  date_added: '2026-02-26'
+- id: W036-CX5-19
+  make: Mazda
+  model: CX-5
+  year: 2019
+  odometer: 57420
+  price: 20500
+  description: Smooth ride, maintained regularly.
+  date_added: '2026-02-26'
+- id: X037-Golf-17
+  make: Volkswagen
+  model: Golf
+  year: 2017
+  odometer: 73310
+  price: 14250
+  description: Fun to drive, sport suspension.
+  date_added: '2026-02-27'
+- id: Y038-Impreza-16
+  make: Subaru
+  model: Impreza
+  year: 2016
+  odometer: 95120
+  price: 11800
+  description: All-wheel drive, great winter car.
+  date_added: '2026-02-27'
+- id: Z039-ModelS-22
+  make: Electra
+  model: Model S
+  year: 2022
+  odometer: 12000
+  price: 55900
+  description: Long range electric, excellent condition.
+  date_added: '2026-02-28'
+- id: A040-Yukon-15
+  make: GMC
+  model: Yukon
+  year: 2015
+  odometer: 128450
+  price: 16900
+  description: Large SUV, third row seating.
+  date_added: '2026-02-28'
+- id: B041-Venza-21
+  make: Toyota
+  model: Venza
+  year: 2021
+  odometer: 33400
+  price: 23500
+  description: Hybrid model, excellent fuel economy.
+  date_added: '2026-03-01'
+- id: C042-Escape-20
+  make: Ford
+  model: Escape
+  year: 2020
+  odometer: 48210
+  price: 17950
+  description: Well kept crossover with warranty remaining.
+  date_added: '2026-03-01'

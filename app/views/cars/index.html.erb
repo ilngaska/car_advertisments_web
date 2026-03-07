@@ -1,34 +1,33 @@
 <div class="max-w-6xl mx-auto px-4 py-12">
   <div class="flex justify-between items-end mb-8">
     <div>
-      <h1 class="text-3xl font-bold text-gray-900">Car Listings</h1>
-      <p class="text-gray-500">Found <%= @pagy.count %> cars</p>
+      <h1 class="text-3xl font-bold text-gray-900"><%= t('listings.title') %></h1>
+      <p class="text-gray-500"><%= t('listings.found', count: @pagy.count) %></p>
     </div>
-    <%= link_to "Advanced Search →", searches_path, class: "text-blue-600 font-semibold hover:underline" %>
+    <%= link_to t('listings.advanced_search'), searches_path, class: "text-blue-600 font-semibold hover:underline" %>
   </div>
 
   <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-6">
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
         <tr>
-          <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Make & Model</th>
+          <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider"><%= t('listings.table.make_model') %></th>
           
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
             <%= link_to cars_path(car: car_params.to_h, sort: params[:sort] == 'year_asc' ? 'year_desc' : 'year_asc'), class: "hover:text-blue-600 flex items-center gap-1" do %>
-              Year <%= params[:sort]&.start_with?('year') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
+              <%= t('listings.table.year') %> <%= sort_direction_symbol(params[:sort]) %>
             <% end %>
           </th>
 
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
             <%= link_to cars_path(car: car_params.to_h, sort: params[:sort] == 'price_asc' ? 'price_desc' : 'price_asc'), class: "hover:text-blue-600 flex items-center gap-1" do %>
-              Price <%= params[:sort]&.start_with?('price') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
+              <%= t('listings.table.price') %> <%= params[:sort]&.start_with?('price') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
 
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-             <% next_date_sort = params[:sort] == 'date_added_desc' ? 'date_added_asc' : 'date_added_desc' %>
-             <%= link_to cars_path(car: car_params.to_h, sort: next_date_sort), class: "hover:text-blue-600 flex items-center gap-1" do %>
-              Date Added <%= params[:sort]&.start_with?('date_added') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
+            <%= link_to cars_path(car: car_params.to_h, sort: params[:sort] == 'date_added_asc' ? 'date_added_desc' : 'date_added_asc'), class: "hover:text-blue-600 flex items-center gap-1" do %>
+              <%= t('listings.table.date_added') %> <%= params[:sort]&.start_with?('date_added') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
         </tr>
@@ -46,7 +45,7 @@
     </table>
   </div>
 
-  <div class="mt-8 flex justify-center">
+  <div class="mt-8">
     <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   </div>
 </div>
