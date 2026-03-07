@@ -1,9 +1,9 @@
-Rails.application.routes.draw do
-  root "home#index"
+# frozen_string_literal: true
 
-  resources :cars, only: [ :index, :show ] do
-    collection do
-      get "search"
-    end
-  end
+Rails.application.routes.draw do
+  root 'home#index'
+
+  resources :cars, only: [:index]
+  resources :searches, only: [:index]
+  resources :help, only: [:index]
 end

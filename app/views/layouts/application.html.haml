@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= t('nav.title')
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %script{:src => "https://cdn.tailwindcss.com"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  %body.bg-gray-50.text-gray-900.font-sans.antialiased
+    %nav.bg-white.border-b.border-gray-200.py-4.shadow-sm.mb-8
+      .max-w-6xl.mx-auto.px-4.flex.justify-between.items-center
+        = link_to "Car Advertisements Web", root_path, class: "text-xl font-bold text-gray-800"
+        .flex.items-center.space-x-6
+          = link_to t('nav.home'), root_path, class: "text-sm font-bold #{current_page?(root_path) ? 'text-blue-600' : 'text-gray-500'}"
+          = link_to t('nav.cars'), cars_path, class: "text-sm font-bold #{current_page?(cars_path) ? 'text-blue-600' : 'text-gray-500'}"
+          = link_to t('nav.search'), searches_path, class: "text-sm font-bold #{current_page?(searches_path) ? 'text-blue-600' : 'text-gray-500'}"
+          = link_to t('nav.help'), help_index_path, class: "text-sm font-bold #{current_page?(help_index_path) ? 'text-blue-600' : 'text-gray-500'}"
+    %main.max-w-6xl.mx-auto.px-4= yield
