@@ -6,14 +6,16 @@ class CarsController < ApplicationController
   helper_method :car_params
 
   def index
-    @cars_query = Car.filter_by_params(car_params).order_by_params(params[:sort])
+    @cars_query = Cars::Searcher.call(car_params)
+    @cars_query = Cars::Sorter.call(@cars_query, params[:sort])
     @pagy, @cars = pagy(@cars_query)
   end
 
   private
 
   def car_params
-    params.expect(car: %i[make model year_from year_to price_from price_to])
+    # Додаємо .permit!, щоб дозволити конвертацію в Hash у в'юшках
+    params.expect(car: %i[make model year_from year_to price_from price_to]).permit!
   rescue ActionController::ParameterMissing
     ActionController::Parameters.new.permit!
   end
