@@ -12,21 +12,22 @@
       <thead class="bg-gray-50">
         <tr>
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Make & Model</th>
+          
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <%= link_to cars_path(car_params.to_h.merge(sort: params[:sort] == 'year_asc' ? 'year_desc' : 'year_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
+            <%= link_to cars_path(car: car_params.to_h, sort: params[:sort] == 'year_asc' ? 'year_desc' : 'year_asc'), class: "hover:text-blue-600 flex items-center gap-1" do %>
               Year <%= params[:sort]&.start_with?('year') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
 
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <%= link_to cars_path(car_params.to_h.merge(sort: params[:sort] == 'price_asc' ? 'price_desc' : 'price_asc')), class: "hover:text-blue-600 flex items-center gap-1" do %>
+            <%= link_to cars_path(car: car_params.to_h, sort: params[:sort] == 'price_asc' ? 'price_desc' : 'price_asc'), class: "hover:text-blue-600 flex items-center gap-1" do %>
               Price <%= params[:sort]&.start_with?('price') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>
 
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-            <% next_date_sort = params[:sort] == 'date_added_desc' ? 'date_added_asc' : 'date_added_desc' %>
-            <%= link_to cars_path(car_params.to_h.merge(sort: next_date_sort)), class: "hover:text-blue-600 flex items-center gap-1" do %>
+             <% next_date_sort = params[:sort] == 'date_added_desc' ? 'date_added_asc' : 'date_added_desc' %>
+             <%= link_to cars_path(car: car_params.to_h, sort: next_date_sort), class: "hover:text-blue-600 flex items-center gap-1" do %>
               Date Added <%= params[:sort]&.start_with?('date_added') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
             <% end %>
           </th>

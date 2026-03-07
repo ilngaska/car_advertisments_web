@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CarsController < ApplicationController
   include Pagy::Backend
 
@@ -13,6 +11,8 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.permit(:make, :model, :year_from, :year_to, :price_from, :price_to, :sort)
+    params.require(:car).permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
+  rescue ActionController::ParameterMissing
+    ActionController::Parameters.new.permit!
   end
 end

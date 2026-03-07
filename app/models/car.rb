@@ -6,7 +6,6 @@ class Car < ApplicationRecord
     results = results.where('make ILIKE ?', "%#{p[:make]}%") if p[:make].present?
     results = results.where('model ILIKE ?', "%#{p[:model]}%") if p[:model].present?
 
-    # Виправляємо Range: перетворюємо параметри в цілі числа (.to_i)
     if p[:year_from].present? || p[:year_to].present?
       from = p[:year_from].presence.to_i
       to = p[:year_to].presence&.to_i || 9999
