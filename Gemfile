@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'bootsnap', require: false
+gem 'haml-rails'
 gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
 gem 'jbuilder'
@@ -25,11 +26,14 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails', '~> 7.0'
   gem 'rubocop-rails-omakase', require: false
 end
 
 group :development do
+  gem 'html2haml'
   gem 'web-console'
 end
 

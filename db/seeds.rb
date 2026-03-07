@@ -9,8 +9,7 @@ Car.destroy_all
     model: Faker::Vehicle.model,
     year: Faker::Vehicle.year,
     price: rand(5000..50_000),
-    date_added: Faker::Date.backward(days: 365),
-    external_id: SecureRandom.uuid
+    created_at: Faker::Date.backward(days: 365)
   )
 end
 
