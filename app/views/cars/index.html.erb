@@ -15,7 +15,7 @@
           
           <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
             <%= link_to cars_path(car: car_params.to_h, sort: params[:sort] == 'year_asc' ? 'year_desc' : 'year_asc'), class: "hover:text-blue-600 flex items-center gap-1" do %>
-              <%= t('listings.table.year') %> <%= params[:sort]&.start_with?('year') ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕' %>
+              <%= t('listings.table.year') %> <%= sort_direction_symbol(params[:sort]) %>
             <% end %>
           </th>
 
