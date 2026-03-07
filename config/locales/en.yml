@@ -4,11 +4,15 @@ en:
     welc_message: "Browse, search, and manage car advertisements. This is a simple learning project demonstrating basic CRUD operations and authentication patterns."
     browse: "Browse Cars"
     browse_message: "View all car advertisements with sorting and pagination"
+    search: "Search Cars"
     search_message: "Find specific cars using advanced search filters"
+    signup: "Create Account"
     signup_message: "Sign up to save searches and manage your preferences"
+    help: "Help"
     help_message: "Learn how to use the platform and find answers to common questions"
     about: "About This Project"
-    about_message: "This is a reference implementation for learning Ruby on Rails with a Tailwind CSS frontend. The UI is intentionally minimal to focus on functionality."
+    about_message: "This is a reference implementation for learning Ruby on Rails with a Tailwind CSS frontend."
+    back_home: "← Back to Home page"
   nav:
     home: "Home"
     cars: "Cars"
@@ -19,17 +23,20 @@ en:
     signup: "Sign Up"
     logout: "Logout"
     greeting: "Hello, %{email}"
-  footer:
-    project_name: "Car Advertisements Web"
-    learning_project: "A Rails learning project"
-  search:
-    title: "Search Cars"
-    subtitle: "Use the filters below to find cars that match your criteria"
-    placeholders:
-      make: "e.g., Toyota"
-      model: "e.g., Camry"
-    submit: "Search"
-    reset: "Reset"
+  login:
+    title: "Login to System"
+    email: "Email Address"
+    password: "Password"
+    confirm_password: "Confirm Password"
+    submit: "Login"
+    no_account: "Don't have an account?"
+    already_account: "Already have an account?"
+  alerts:
+    login_required: "Please log in to see your history."
+    login_success: "You logged in successfully!"
+    signup_success: "You signed up successfully!"
+    logout_success: "You logged out successfully."
+    invalid_auth: "Incorrect email or password."
   listings:
     title: "Car Listings"
     found: "Found %{count} cars"
@@ -39,11 +46,20 @@ en:
       year: "Year"
       price: "Price"
       date_added: "Date Added"
+  search:
+    title: "Search Cars"
+    subtitle: "Use the filters below to find cars that match your criteria"
+    submit: "Search"
+    reset: "Reset"
+    placeholders:
+      make: "e.g., Toyota"
+      model: "e.g., Camry"
   history:
-    title: "Search history"
+    title: "Search History"
     subtitle: "Your last queries"
     empty: "Your search history is empty"
     query_at: "Query from %{date}"
+    repeat: "Repeat Search"
     fields:
       make: "Make"
       model: "Model"
@@ -55,24 +71,12 @@ en:
     title: "Help & Documentation"
     getting_started:
       title: "Getting Started"
-      browse: "1. Browse Cars: Navigate to the Cars page to see all available ads. You can sort them by price or year."
-      search: "2. Search: Use the Search page to find cars by specific parameters like make or price range."
+      browse: "1. Browse Cars: Navigate to the Cars page to see all available ads."
+      search: "2. Search: Use the Search page to find cars by specific parameters."
     faq:
       title: "FAQ"
       question: "Is this a real marketplace?"
       answer: "No, this is a learning project for demonstration purposes only."
-  login:
-    title: "Login to System"
-    email: "Email Address"
-    password: "Password"
-    submit: "Login"
-    confirm: "Confirm password"
-    signup: "Sign Up"
-  alerts:
-    login_required: "Please log in to see your history."
-    login_success: "You logged in successfully!"
-    signup_success: "You signed up successfully!"
-    logout_success: "You logged out successfully."
-    invalid_auth: "Incorrect email or password."
-  common:
-    back_home: "← Back to Home page"
+  footer:
+    project_name: "Car Advertisements Web"
+    learning_project: "A Rails learning project"

@@ -1,5 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# == Schema Information
+#
+# Table name: cars
+#
+#  id          :bigint           not null, primary key
+#  date_added  :date
+#  description :text
+#  make        :string
+#  model       :string
+#  odometer    :integer
+#  price       :integer
+#  year        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  external_id :string
+#
 one:
   external_id: MyString
   make: MyString

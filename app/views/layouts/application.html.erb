@@ -3,9 +3,9 @@
   <head>
     <title><%= t('footer.project_name') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://cdn.tailwindcss.com"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://cdn.tailwindcss.com"></script>
     <%= stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -18,46 +18,43 @@
         <% end %>
 
         <div class="flex items-center space-x-6">
-            <div class="flex space-x-6 items-center">
-              <%= link_to t('nav.home'), root_path, class: "text-sm font-bold #{current_page?(root_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
-              <%= link_to t('nav.cars'), cars_path, class: "text-sm font-bold #{current_page?(cars_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
-              <%= link_to t('nav.search'), search_cars_path, class: "text-sm font-bold #{current_page?(search_cars_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
-    
-              <% if logged_in? %>
-                <%= link_to t('nav.history'), history_path, class: "text-sm font-bold #{current_page?(history_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
-              <% end %>
-              
-              <%= link_to t('nav.help'), help_path, class: "text-sm font-bold #{current_page?(help_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
-            </div>
-
-            <div class="flex items-center space-x-3">
-              <% if logged_in? %>
-                <span class="text-sm text-gray-600"><%= t('nav.greeting', email: current_user.email) %></span>
-                <%= link_to t('nav.logout'), logout_path, data: { turbo_method: :delete }, class: "text-red-600" %>
-              <% else %>
-                <%= link_to t('nav.login'), login_path, class: "text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2" %>
-                <%= link_to t('nav.signup'), signup_path, class: "text-sm font-medium bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition shadow-sm" %>
-              <% end %>
-            </div>
+          <div class="flex space-x-6 items-center">
+            <%= link_to t('nav.home'), root_path, class: "text-sm font-bold #{current_page?(root_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
+            <%= link_to t('nav.cars'), cars_path, class: "text-sm font-bold #{current_page?(cars_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
+            <%= link_to t('nav.search'), searches_path, class: "text-sm font-bold #{current_page?(searches_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
+  
+            <% if session[:user_email] %>
+              <%= link_to t('nav.history'), search_histories_path, class: "text-sm font-bold #{current_page?(search_histories_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
+            <% end %>
+            
+            <%= link_to t('nav.help'), help_index_path, class: "text-sm font-bold #{current_page?(help_index_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}" %>
           </div>
+
+          <div class="flex items-center space-x-3">
+            <% if session[:user_email] %>
+              <span class="text-sm text-gray-600"><%= t('nav.greeting', email: session[:user_email]) %></span>
+              <%= link_to t('nav.logout'), logout_path, class: "text-red-600 text-sm font-bold hover:underline" %>
+            <% else %>
+              <%= link_to t('nav.login'), new_session_path, class: "text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2" %>
+              <%= link_to t('nav.signup'), new_user_path, class: "text-sm font-medium bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition shadow-sm" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </nav>
 
     <main class="max-w-6xl mx-auto px-4 pb-12 flex-grow">
       <% flash.each do |type, msg| %>
         <div class="mb-6 p-4 rounded-md shadow-sm border <%= type == 'notice' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200' %>">
-          <div class="flex items-center">
-            <span><%= msg %></span>
-          </div>
+          <%= msg %>
         </div>
       <% end %>
-
       <%= yield %>
     </main>
 
-    <footer class="py-8 border-t border-gray-100 bg-white shadow-[0_-1px_2px_rgba(0,0,0,0.05)]">
+    <footer class="py-8 border-t border-gray-100 bg-white">
       <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-400">
-        © <%= Time.now.year %> <%= t('footer.project_name') %>. <%= t('footer.learning_project') %>.
+        © <%= Time.now.year %> <%= t('footer.project_name') %>
       </div>
     </footer>
   </body>
