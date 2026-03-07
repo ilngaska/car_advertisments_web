@@ -14,9 +14,9 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    # Додаємо .permit!, щоб дозволити конвертацію в Hash у в'юшках
-    params.expect(car: %i[make model year_from year_to price_from price_to]).permit!
+    params.expect(car: %i[make model year_from year_to price_from price_to])
+          .permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
   rescue ActionController::ParameterMissing
-    ActionController::Parameters.new.permit!
+    ActionController::Parameters.new.permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
   end
 end
