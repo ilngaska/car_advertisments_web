@@ -21,7 +21,7 @@
 class SearchHistory < ApplicationRecord
   belongs_to :user
 
-  MAXIMUM_QUERY_LENGTH = 500 
+  MAXIMUM_QUERY_LENGTH = 500
 
   validates :query, presence: true, length: { maximum: MAXIMUM_QUERY_LENGTH }
 

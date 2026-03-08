@@ -5,7 +5,6 @@
 # Table name: cars
 #
 #  id          :bigint           not null, primary key
-#  date_added  :date
 #  description :text
 #  make        :string
 #  model       :string
@@ -14,7 +13,6 @@
 #  year        :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  external_id :string
 #
 class Car < ApplicationRecord
   scope :filter_by_make, ->(make) { where('make ILIKE ?', "%#{make}%") }
