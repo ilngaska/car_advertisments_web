@@ -1,0 +1,31 @@
+.max-w-6xl.mx-auto.px-4.py-12
+  .flex.justify-between.items-end.mb-8
+    %div
+      %h1.text-3xl.font-bold.text-gray-900= t('listings.title')
+      %p.text-gray-500= t('listings.found', count: @pagy.count)
+    = link_to "Advanced Search →", searches_path, class: "text-blue-600 font-semibold hover:underline"
+
+  .bg-white.border.border-gray-200.rounded-xl.shadow-sm.overflow-hidden.mb-6
+    %table.min-w-full.divide-y.divide-gray-200
+      %thead.bg-gray-50
+        %tr
+          %th.px-6.py-4.text-left.text-xs.font-bold.text-gray-500.uppercase.tracking-wider
+            = t('listings.table.make_model')
+          
+          = render 'sort_link', column: 'year'
+          = render 'sort_link', column: 'price'
+          = render 'sort_link', column: 'created_at'
+
+      %tbody.bg-white.divide-y.divide-gray-200
+        - @cars.each do |car|
+          %tr.hover:bg-gray-50.transition
+            %td.px-6.py-4.text-sm.font-bold.text-gray-900= "#{car.make} #{car.model}"
+            %td.px-6.py-4.text-sm.text-gray-600= car.year
+            %td.px-6.py-4.text-sm.font-extrabold.text-blue-700
+              = number_to_currency(car.price, precision: 0, unit: "$")
+            %td.px-6.py-4.text-sm.text-gray-400
+              = car.created_at&.strftime("%b %d, %Y")
+
+  .mt-8.flex.justify-center
+    - if @pagy.pages > 1
+      != pagy_nav(@pagy)

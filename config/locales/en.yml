@@ -14,6 +14,7 @@ en:
     about_message: "This is a reference implementation for learning Ruby on Rails with a Tailwind CSS frontend."
     back_home: "← Back to Home page"
   nav:
+    title: "CarAdsWeb"
     home: "Home"
     cars: "Cars"
     search: "Search"
@@ -45,12 +46,21 @@ en:
       make_model: "Make & Model"
       year: "Year"
       price: "Price"
-      date_added: "Date Added"
+      created_at: "Date Added"
   search:
     title: "Search Cars"
     subtitle: "Use the filters below to find cars that match your criteria"
     submit: "Search"
     reset: "Reset"
+    fields:
+      make: "Make"
+      make_desc: "e.g., Toyota"
+      model: "Model"
+      model_desc: "e.g., Camry"
+      year_from: "Year From"
+      year_to: "Year To"
+      price_from: "Min Price ($)"
+      price_to: "Max Price ($)"
     placeholders:
       make: "e.g., Toyota"
       model: "e.g., Camry"

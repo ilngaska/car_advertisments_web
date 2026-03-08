@@ -21,6 +21,10 @@
 class SearchHistory < ApplicationRecord
   belongs_to :user
 
+  MAXIMUM_QUERY_LENGTH = 500 
+
+  validates :query, presence: true, length: { maximum: MAXIMUM_QUERY_LENGTH }
+
   def details
     query.compact_blank.map { |k, v| "#{k.humanize}: #{v}" }.join(', ')
   end

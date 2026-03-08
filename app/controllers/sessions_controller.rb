@@ -2,10 +2,10 @@
 
 class SessionsController < ApplicationController
   def create
-    user = UserManager.new.authenticate(params[:email], params[:password])
+    @user = UserManager.new.authenticate(params[:email], params[:password])
 
-    if user
-      login_and_redirect(user)
+    if @user
+      login_and_redirect(@user)
     else
       invalid_login_response
     end

@@ -6,7 +6,8 @@ class CarsController < ApplicationController
   helper_method :car_params
 
   def index
-    @cars_query = Car.filter_by_params(car_params).order_by_params(params[:sort])
+    @cars_query = Cars::Searcher.call(car_params)
+    @cars_query = Cars::Sorter.call(@cars_query, params[:sort])
     @pagy, @cars = pagy(@cars_query)
 
     return unless params[:car].present? && session[:user_email]
@@ -18,7 +19,8 @@ class CarsController < ApplicationController
 
   def car_params
     params.expect(car: %i[make model year_from year_to price_from price_to])
+          .permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
   rescue ActionController::ParameterMissing
-    ActionController::Parameters.new.permit!
+    ActionController::Parameters.new.permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
   end
 end

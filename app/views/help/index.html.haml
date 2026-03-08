@@ -1,0 +1,21 @@
+.max-w-3xl.mx-auto.py-12.px-4
+  %h1.text-4xl.font-bold.mb-8.text-gray-900= t('help.title')
+  
+  .space-y-10
+    %section
+      %h2.text-xl.font-bold.mb-4.border-b.pb-2= t('help.getting_started.title')
+      .space-y-4.text-gray-700
+        %p
+          = t('help.getting_started.browse')
+        %p
+          = t('help.getting_started.search')
+          
+    %section
+      %h2.text-xl.font-bold.mb-4.border-b.pb-2= t('help.faq.title')
+      .space-y-6
+        %div
+          %h4.font-bold.text-gray-800= t('help.faq.question')
+          %p.text-sm.text-gray-600.italic= t('help.faq.answer')
+
+  .mt-8
+    = link_to t('general.back_home'), root_path, class: "inline-block text-blue-600 font-bold hover:underline"
