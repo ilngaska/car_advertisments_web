@@ -1,17 +1,20 @@
 pre-commit:
+  parallel: true
   jobs:
-    - glob: "config/locales/*.yml"
-      name: yalphabetize
+    - name: yalphabetize
+      glob: "config/locales/*.yml"
       run: bundle exec yalphabetize {staged_files} --check
-    - exclude:
+
+    - name: rubocop
+      glob: "*.rb"
+      exclude:
         - config/application.rb
         - config/routes.rb
-      glob: "*.rb"
-      name: rubocop
       run: bundle exec rubocop --force-exclusion {staged_files}
+
     - name: brakeman
       run: bundle exec brakeman --quiet
-  parallel: true
+
 pre-push:
   jobs:
     - name: rspec
