@@ -3,19 +3,15 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  get    'login',  to: 'sessions#new', as: :login
-  post   'login',  to: 'sessions#create'
+  resource :session, only: %i[new create destroy]
+  resources :users, only: %i[new create]
+
   get 'logout', to: 'sessions#destroy', as: :logout
 
-  get    'signup', to: 'users#new', as: :signup
-  post   'signup', to: 'users#create'
-
-  resources :cars, only: [:index] do
-    get 'search', on: :collection, as: :search
-  end
-
-  get 'history', to: 'pages#history', as: :history
-  get 'help',    to: 'pages#help',    as: :help
+  resources :cars, only: [:index]
+  resources :searches, only: [:index]
+  resources :search_histories, only: [:index]
+  resources :help, only: [:index]
 
   namespace :admin do
     resources :car_advertisements

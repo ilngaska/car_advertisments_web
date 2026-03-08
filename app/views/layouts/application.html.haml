@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= t('nav.title')
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    %script{:src => "https://cdn.tailwindcss.com"}
+    = stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  %body.bg-gray-50.text-gray-900.font-sans.antialiased.flex.flex-col.min-h-screen
+    %nav.bg-white.border-b.border-gray-200.py-4.shadow-sm.mb-8
+      .max-w-6xl.mx-auto.px-4.flex.justify-between.items-center
+        = link_to root_path, class: "text-xl font-bold tracking-tight text-gray-800" do
+          = t('nav.title')
+        .flex.items-center.space-x-6
+          .flex.space-x-6.items-center
+            = link_to t('nav.home'), root_path, class: "text-sm font-bold #{current_page?(root_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}"
+            = link_to t('nav.cars'), cars_path, class: "text-sm font-bold #{current_page?(cars_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}"
+            = link_to t('nav.search'), searches_path, class: "text-sm font-bold #{current_page?(searches_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}"
+            
+            - if logged_in?
+              = link_to t('nav.history'), search_histories_path, class: "text-sm font-bold #{current_page?(search_histories_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}"
+              - if current_user.admin?
+                = link_to t('admin.title'), admin_car_advertisements_path, class: "text-sm font-bold text-purple-600 hover:text-purple-800"
+            
+            = link_to t('nav.help'), help_index_path, class: "text-sm font-bold #{current_page?(help_index_path) ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}"
+          
+          .flex.items-center.space-x-3
+            - if logged_in?
+              %span.text-sm.text-gray-600= t('nav.greeting', email: current_user.email)
+              = link_to t('nav.logout'), logout_path, class: "text-red-600 text-sm font-bold hover:underline"
+            - else
+              = link_to t('nav.login'), new_session_path, class: "text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-2"
+              = link_to t('nav.signup'), new_user_path, class: "text-sm font-medium bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition shadow-sm"
+    
+    %main.max-w-6xl.mx-auto.px-4.pb-12.flex-grow
+      - flash.each do |type, msg|
+        %div{:class => "mb-6 p-4 rounded-md shadow-sm border #{type == 'notice' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}"}
+          = msg
+      = yield
+    
+    %footer.py-8.border-t.border-gray-100.bg-white
+      .max-w-6xl.mx-auto.px-4.text-center.text-sm.text-gray-400
+        © #{Time.now.year} #{t('footer.project_name')}. #{t('footer.learning_project')}

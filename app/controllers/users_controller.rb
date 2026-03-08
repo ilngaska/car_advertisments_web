@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      session[:user_email] = @user.email
       redirect_to root_path, notice: t('alerts.signup_success')
     else
       render :new, status: :unprocessable_content

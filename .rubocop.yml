@@ -1,10 +1,4 @@
-plugins:
-  - rubocop-rails
-  - rubocop-performance
-
 AllCops:
-  NewCops: enable
-  TargetRubyVersion: 3.4
   Exclude:
     - 'bin/**/*'
     - 'db/schema.rb'
@@ -12,21 +6,20 @@ AllCops:
     - 'vendor/**/*'
     - 'node_modules/**/*'
     - 'db/migrate/*'
-
-Style/Documentation:
-  Enabled: false
-
+  NewCops: enable
+  TargetRubyVersion: 3.4
 Layout/LineLength:
   Max: 120
-
-Rails:
-  Enabled: true
-
-Style/StringHashKeys:
-  Enabled: false
-
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
     - 'spec/**/*'
-    - 'test/**/*'
+Rails:
+  Enabled: true
+Style/Documentation:
+  Enabled: false
+Style/StringHashKeys:
+  Enabled: false
+plugins:
+  - rubocop-rails
+  - rubocop-performance

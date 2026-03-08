@@ -2,31 +2,27 @@ default: &default
   adapter: postgresql
   encoding: unicode
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-
 development:
   <<: *default
   database: car_advertisments_web_development
-
-test:
-  <<: *default
-  database: car_advertisments_web_test
-
 production:
-  primary: &primary_production
-    <<: *default
-    database: car_advertisments_web_production
-    username: car_advertisments_web
-    password: <%= ENV["CAR_ADVERTISMENTS_WEB_DATABASE_PASSWORD"] %>
+  cable:
+    <<: &primary_production
+      <<: *default
+      database: car_advertisments_web_production
+      password: <%= ENV["CAR_ADVERTISMENTS_WEB_DATABASE_PASSWORD"] %>
+      username: car_advertisments_web
+    database: car_advertisments_web_production_cable
+    migrations_paths: db/cable_migrate
   cache:
     <<: *primary_production
     database: car_advertisments_web_production_cache
     migrations_paths: db/cache_migrate
+  primary: *primary_production
   queue:
     <<: *primary_production
     database: car_advertisments_web_production_queue
     migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: car_advertisments_web_production_cable
-    migrations_paths: db/cable_migrate
+test:
+  <<: *default
+  database: car_advertisments_web_test

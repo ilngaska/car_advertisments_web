@@ -1,0 +1,28 @@
+.max-w-4xl.mx-auto.px-4.py-12
+  .mb-10.text-center
+    %h1.text-4xl.font-extrabold.text-gray-900.mb-2= t('history.title')
+    %p.text-gray-500.text-lg= t('history.subtitle')
+
+  - if @search_histories.any?
+    .space-y-6
+      - @search_histories.each do |entry|
+        .bg-white.border.border-gray-100.rounded-3xl.p-6.shadow-sm
+          .flex.justify-between.items-start.mb-4
+            .flex.items-center.gap-2
+              %span.font-bold.text-gray-800
+                = t('history.query_at', date: l(entry.created_at, format: :long))
+
+          .flex.flex-wrap.gap-2
+            - entry.query.each do |key, value|
+              - if value.present?
+                .flex.items-center.bg-gray-50.border.border-gray-200.px-3.py-1.5.rounded-xl
+                  %span.text-xs.font-semibold.text-gray-400.uppercase.mr-2
+                    = t("history.fields.#{key}", default: key.to_s.humanize)
+                    \:
+                  %span.text-sm.font-bold.text-gray-700= value
+          
+          .mt-4.flex.justify-end
+            = link_to t('history.repeat'), cars_path(car: entry.query), class: "text-blue-600 font-bold hover:underline"
+  - else
+    .text-center.py-16
+      %h3.text-xl.font-bold.text-gray-900= t('history.empty')

@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   def require_login
     return if logged_in?
 
-    redirect_to login_path, alert: t('alerts.login_required')
+    redirect_to new_session_path, alert: t('alerts.login_required')
   end
 end
