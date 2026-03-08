@@ -17,4 +17,4 @@ pre-push:
     - name: rspec
       run: bundle exec rspec
     - name: brakeman
-      run: bundle exec brakeman --quiet
+      run: bundle exec brakeman --quiet --filter-files {staged_files}

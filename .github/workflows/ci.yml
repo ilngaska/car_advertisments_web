@@ -48,7 +48,7 @@ jobs:
             rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-
 
       - name: Check YAML alphabetization
-        run: bundle exec yalphabetize --check config/locales/
+        run: bundle exec yalphabetize config/locales/ --check
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
