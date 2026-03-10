@@ -3,7 +3,6 @@
 class CarsController < ApplicationController
   include Pagy::Backend
 
-
   def index
     @cars_query = Cars::Searcher.call(car_params)
     @cars_query = Cars::Sorter.call(@cars_query, params[:sort])
@@ -16,3 +15,4 @@ class CarsController < ApplicationController
     params.fetch(:car, ActionController::Parameters.new)
           .permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
   end
+end
