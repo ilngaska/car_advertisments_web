@@ -2,4 +2,3 @@
   = link_to cars_path(car: @car_params.to_h, sort: params[:sort] == "#{column}_asc" ? "#{column}_desc" : "#{column}_asc"), class: "hover:text-blue-600 flex items-center gap-1" do
     = t("cars.sort.#{column}")
     = symbol_for_sort(column)
-
