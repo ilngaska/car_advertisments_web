@@ -3,7 +3,7 @@
     %div
       %h1.text-3xl.font-bold.text-gray-900= t('cars.index.title')
       %p.text-gray-500= t('cars.index.count', count: @pagy.count)
-    = link_to "Advanced Search →", searches_path, class: "text-blue-600 font-semibold hover:underline"
+    = link_to t('nav.advanced'), searches_path, class: "text-blue-600 font-semibold hover:underline"
 
   .bg-white.border.border-gray-200.rounded-xl.shadow-sm.overflow-hidden.mb-6
     %table.min-w-full.divide-y.divide-gray-200

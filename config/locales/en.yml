@@ -5,6 +5,7 @@ en:
     cars: "Cars"
     search: "Search"
     help: "Help"
+    advanced: "Advanced Search →"
   buttons:
     search: "Search"
     reset: "Reset"
@@ -26,17 +27,17 @@ en:
   cars:
     fields:
       make: "Make"
+      make_desc: "e.g. Toyota"
+      make_model: "Make & Model"
       model: "Model"
-      year_from: "Year From"
-      year_to: "Year To"
+      model_desc: "e.g. Camry"
       price_from: "Min Price ($)"
       price_to: "Max Price ($)"
-      make_model: "Make & Model"
+      year_from: "Year From"
+      year_to: "Year To"
     index:
       title: "Car Listings"
       count: "Found %{count} cars"
-    fields:
-      make_model: "Make & Model"
     sort:
       year: "Year"
       price: "Price"
