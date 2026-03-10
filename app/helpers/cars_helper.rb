@@ -8,10 +8,10 @@ module CarsHelper
   end
 
   def format_car_price(price)
-    number_to_currency(price, precision: 0, unit: "$")
+    number_to_currency(price, precision: 0, unit: '$')
   end
 
   def format_car_date(date)
-    date&.strftime("%b %d, %Y")
+    date&.strftime('%b %d, %Y')
   end
 end
