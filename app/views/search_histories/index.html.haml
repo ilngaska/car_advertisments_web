@@ -1,5 +1,5 @@
 .max-w-4xl.mx-auto.py-12.px-4
-  %h1.text-3xl.font-bold.text-gray-900.mb-8 Your Search History
+  %h1.text-3xl.font-bold.text-gray-900.mb-8= t('history.subtitle')
   - if @search_histories&.any?
     .space-y-4
       - @search_histories.each do |history|

@@ -1,5 +1,5 @@
 .max-w-4xl.mx-auto.py-12.px-4
-  %h1.text-4xl.font-bold.text-gray-900.mb-2= t('searches.index.title', default: 'Search Cars')
+  %h1.text-4xl.font-bold.text-gray-900.mb-2= t('search.title')
   
   = form_with url: cars_path, method: :get, scope: :car, local: true, class: "space-y-6 bg-white p-8 border border-gray-200 rounded-xl shadow-sm" do |f|
     .grid.grid-cols-1.md:grid-cols-2.gap-6

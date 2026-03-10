@@ -61,9 +61,6 @@ en:
       year_to: "Year To"
       price_from: "Min Price ($)"
       price_to: "Max Price ($)"
-    placeholders:
-      make: "e.g., Toyota"
-      model: "e.g., Camry"
   history:
     title: "Search History"
     subtitle: "Your last queries"
