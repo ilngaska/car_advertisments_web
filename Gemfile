@@ -8,7 +8,7 @@ gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'kamal', require: false
-gem 'pagy', '~> 9.3'
+gem 'pagy', '~> 43.3'
 gem 'pg', '~> 1.1'
 gem 'propshaft'
 gem 'puma', '>= 5.0'
