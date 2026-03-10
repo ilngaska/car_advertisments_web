@@ -13,9 +13,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.expect(car: %i[make model year_from year_to price_from price_to])
+    params.fetch(:car, ActionController::Parameters.new)
           .permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
-  rescue ActionController::ParameterMissing
-    ActionController::Parameters.new.permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
   end
-end
