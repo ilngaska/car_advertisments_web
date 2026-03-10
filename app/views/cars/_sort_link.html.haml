@@ -1,4 +1,5 @@
 %th.px-6.py-4.text-left.text-xs.font-bold.text-gray-500.uppercase.tracking-wider
-  = link_to cars_path(car: car_params.to_h, sort: params[:sort] == "#{column}_asc" ? "#{column}_desc" : "#{column}_asc"), class: "hover:text-blue-600 flex items-center gap-1" do
+  = link_to cars_path(car: @car_params.to_h, sort: params[:sort] == "#{column}_asc" ? "#{column}_desc" : "#{column}_asc"), class: "hover:text-blue-600 flex items-center gap-1" do
     = t("listings.table.#{column}")
-    = params[:sort]&.start_with?(column.to_s) ? (params[:sort].end_with?('asc') ? '↑' : '↓') : '↕'
+    = symbol_for_sort(column)
+    

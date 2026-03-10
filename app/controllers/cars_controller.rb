@@ -3,24 +3,25 @@
 class CarsController < ApplicationController
   include Pagy::Backend
 
-  helper_method :car_params
-
   def index
-    @cars_query = Cars::Searcher.call(car_params)
+    @car_params = car_params
+    @cars_query = Cars::Searcher.call(@car_params)
     @cars_query = Cars::Sorter.call(@cars_query, params[:sort])
     @pagy, @cars = pagy(@cars_query)
 
-    return unless params[:car].present? && session[:user_email]
-
-    UserManager.new.add_search_to_history(session[:user_email], car_params)
+    save_search_history if session[:user_email]
   end
 
   private
 
   def car_params
-    params.expect(car: %i[make model year_from year_to price_from price_to])
+    params.fetch(:car, ActionController::Parameters.new)
           .permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
-  rescue ActionController::ParameterMissing
-    ActionController::Parameters.new.permit(:make, :model, :year_from, :year_to, :price_from, :price_to)
+  end
+
+  def save_search_history
+    return if params[:car].blank?
+
+    UserManager.new.add_search_to_history(session[:user_email], car_params)
   end
 end
