@@ -1,0 +1,21 @@
+.py-12.px-4.max-w-6xl.mx-auto
+  %h1.text-4xl.font-extrabold.mb-4.text-gray-900= t('home.index.welcome')
+  %p.text-gray-600.mb-10.max-w-2xl.text-lg
+    = t('home.index.welcome_description')
+    
+  .grid.grid-cols-1.md:grid-cols-2.gap-6
+    = link_to cars_path, class: "p-8 border-2 rounded-xl bg-blue-50 border-blue-200 hover:border-blue-400 transition group shadow-sm" do
+      %h3.text-xl.font-bold.mb-2.group-hover:text-blue-700.text-gray-900= t('home.index.browse_title')
+      %p.text-sm.text-gray-500= t('home.index.browse_desc')
+      
+    = link_to searches_path, class: "p-8 border rounded-xl border-gray-200 hover:shadow-md transition text-gray-900 bg-white shadow-sm" do
+      %h3.text-xl.font-bold.mb-2= t('home.index.search_title')
+      %p.text-sm.text-gray-500= t('home.index.search_desc')
+      
+    .p-8.border.rounded-xl.border-gray-200.text-gray-900.bg-white.opacity-60.shadow-sm
+      %h3.text-xl.font-bold.mb-2= t('home.index.account_title')
+      %p.text-sm.text-gray-500= t('home.index.account_desc')
+      
+    = link_to help_index_path, class: "p-8 border rounded-xl border-gray-200 hover:shadow-md transition text-gray-900 bg-white shadow-sm" do
+      %h3.text-xl.font-bold.mb-2= t('home.index.help_title')
+      %p.text-sm.text-gray-500= t('home.index.help_description')
