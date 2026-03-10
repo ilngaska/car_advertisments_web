@@ -3,7 +3,6 @@
 class CarsController < ApplicationController
   include Pagy::Backend
 
-  helper_method :car_params
 
   def index
     @cars_query = Cars::Searcher.call(car_params)
