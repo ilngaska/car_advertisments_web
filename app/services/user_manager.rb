@@ -20,6 +20,7 @@ class UserManager
 
     clean_query = query.to_h.symbolize_keys.slice(:make, :model, :year_from, :year_to, :price_from, :price_to)
     return if clean_query.values.all?(&:blank?)
+    return if user.search_histories.last&.query&.symbolize_keys == clean_query
 
     user.search_histories.create(query: clean_query)
   end

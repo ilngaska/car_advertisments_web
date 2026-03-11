@@ -9,7 +9,15 @@
     %script{:src => "https://cdn.tailwindcss.com"}
     = stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body.bg-gray-50.text-gray-900.font-sans.antialiased
+  %body.bg-gray-50.text-gray-900.font-sans.antialiased.flex.flex-col.min-h-screen
     = render 'shared/header'
-    %main.max-w-6xl.mx-auto.px-4
+    %main.max-w-6xl.mx-auto.px-4.pb-12.flex-grow
+      - flash.each do |type, msg|
+        %div{:class => "mb-6 p-4 rounded-md shadow-sm border #{type == 'notice' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}"}
+          = msg
       = yield
+    
+    %footer.py-8.border-t.border-gray-100.bg-white
+      .max-w-6xl.mx-auto.px-4.text-center.text-sm.text-gray-400
+        © #{Time.now.year} #{t('footer.project_name')}. #{t('footer.learning_project')}
+

@@ -1,0 +1,33 @@
+= form_with model: [:admin, car],                                                          |
+  url: car.persisted? ? admin_car_advertisement_path(car) : admin_car_advertisements_path, |
+  class: "space-y-6" do |f|                                                                |
+  - if car.errors.any?
+    .p-4.bg-red-50.border.border-red-200.text-red-700.rounded-lg
+      %h2.font-bold.mb-2
+        = pluralize(car.errors.count, "error")
+        prohibited this car from being saved:
+      %ul.list-disc.list-inside.text-sm
+        - car.errors.full_messages.each do |msg|
+          %li= msg
+  .grid.grid-cols-1.md:grid-cols-2.gap-6
+    %div
+      = f.label :make, class: "block text-sm font-medium text-gray-700 mb-1"
+      = f.text_field :make, class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+    %div
+      = f.label :model, class: "block text-sm font-medium text-gray-700 mb-1"
+      = f.text_field :model, class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+    %div
+      = f.label :year, class: "block text-sm font-medium text-gray-700 mb-1"
+      = f.number_field :year, class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+    %div
+      = f.label :price, class: "block text-sm font-medium text-gray-700 mb-1"
+      = f.number_field :price, class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+    %div
+      = f.label :odometer, class: "block text-sm font-medium text-gray-700 mb-1"
+      = f.number_field :odometer, class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+  %div
+    = f.label :description, class: "block text-sm font-medium text-gray-700 mb-1"
+    = f.text_area :description, rows: 4, class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+  .flex.justify-end.space-x-3.pt-4.border-t
+    = link_to t('admin.cancel'), admin_car_advertisements_path, class: "px-4 py-2 text-sm text-gray-600 hover:text-gray-900"
+    = f.submit class: "px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition cursor-pointer font-bold shadow-sm"

@@ -14,6 +14,10 @@
           
           = render 'sort_link', column: 'year'
           = render 'sort_link', column: 'price'
+
+          %th.px-6.py-4.text-left.text-xs.font-bold.text-gray-500.uppercase.tracking-wider
+            = t('listings.table.odometer')
+
           = render 'sort_link', column: 'created_at'
 
       %tbody.bg-white.divide-y.divide-gray-200

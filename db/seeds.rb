@@ -9,6 +9,7 @@ Car.destroy_all
     model: Faker::Vehicle.model,
     year: Faker::Vehicle.year,
     price: rand(5000..50_000),
+    odometer: rand(1000..300_000),
     created_at: Faker::Date.backward(days: 365)
   )
 end

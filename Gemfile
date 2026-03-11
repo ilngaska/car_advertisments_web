@@ -35,6 +35,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'lefthook'
   gem 'rspec-rails', '~> 7.0'
   gem 'rubocop-rails-omakase', require: false
 end
@@ -43,6 +44,7 @@ group :development do
   gem 'annotaterb'
   gem 'html2haml'
   gem 'web-console'
+  gem 'yalphabetize'
 end
 
 group :test do
