@@ -1,55 +1,89 @@
 en:
-  nav: 
-    title: "Cars Advertisements Web"
+  general:
+    welcome: "Welcome to Car Advertisements Web"
+    welc_message: "Browse, search, and manage car advertisements. This is a simple learning project demonstrating basic CRUD operations and authentication patterns."
+    browse: "Browse Cars"
+    browse_message: "View all car advertisements with sorting and pagination"
+    search: "Search Cars"
+    search_message: "Find specific cars using advanced search filters"
+    signup: "Create Account"
+    signup_message: "Sign up to save searches and manage your preferences"
+    help: "Help"
+    help_message: "Learn how to use the platform and find answers to common questions"
+    about: "About This Project"
+    about_message: "This is a reference implementation for learning Ruby on Rails with a Tailwind CSS frontend."
+    back_home: "← Back to Home page"
+  nav:
+    title: "CarAdsWeb"
     home: "Home"
     cars: "Cars"
     search: "Search"
+    history: "History"
     help: "Help"
-    advanced: "Advanced Search →"
-  buttons:
-    search: "Search"
-    reset: "Reset"
-  home:
-    index:
-      welcome: "Welcome to Car Advertisements Web"
-      welcome_description: "Browse, search, and manage car advertisements. This is a simple learning project demonstrating basic CRUD operations and authentication patterns."
-      browse_title: "Browse Cars"
-      browse_desc: "View all car advertisements with sorting and pagination"
-      search_title: "Search"
-      search_desc: "Find specific cars using advanced search filters"
-      account_title: "Create Account"
-      account_desc: "Sign up to save searches and manage your preferences"
-      help_title: "Help"
-      help_description: "Learn how to use the platform and find answers to your questions."
-  searches:
-    index:
-      title: "Search Cars"
-  cars:
-    fields:
-      make: "Make"
-      make_desc: "e.g. Toyota"
+    login: "Login"
+    signup: "Sign Up"
+    logout: "Logout"
+    greeting: "Hello, %{email}"
+  login:
+    title: "Login to System"
+    email: "Email Address"
+    password: "Password"
+    confirm_password: "Confirm Password"
+    submit: "Login"
+    no_account: "Don't have an account?"
+    already_account: "Already have an account?"
+  alerts:
+    login_required: "Please log in to see your history."
+    login_success: "You logged in successfully!"
+    signup_success: "You signed up successfully!"
+    logout_success: "You logged out successfully."
+    invalid_auth: "Incorrect email or password."
+  listings:
+    title: "Car Listings"
+    found: "Found %{count} cars"
+    advanced_search: "Advanced Search →"
+    table:
       make_model: "Make & Model"
-      model: "Model"
-      model_desc: "e.g. Camry"
-      price_from: "Min Price ($)"
-      price_to: "Max Price ($)"
-      year_from: "Year From"
-      year_to: "Year To"
-    index:
-      title: "Car Listings"
-      count: "Found %{count} cars"
-    sort:
       year: "Year"
       price: "Price"
       created_at: "Date Added"
+  search:
+    title: "Search Cars"
+    subtitle: "Use the filters below to find cars that match your criteria"
+    submit: "Search"
+    reset: "Reset"
+    fields:
+      make: "Make"
+      make_desc: "e.g., Toyota"
+      model: "Model"
+      model_desc: "e.g., Camry"
+      year_from: "Year From"
+      year_to: "Year To"
+      price_from: "Min Price ($)"
+      price_to: "Max Price ($)"
+  history:
+    title: "Search History"
+    subtitle: "Your last queries"
+    empty: "Your search history is empty"
+    query_at: "Query from %{date}"
+    repeat: "Repeat Search"
+    fields:
+      make: "Make"
+      model: "Model"
+      year_from: "Year from"
+      year_to: "Year to"
+      price_from: "Price from"
+      price_to: "Price to"
   help:
-    index:
-      getting_started: "Getting started"
-      title: "Help Documentation"
-      back: "← Back to Home page"
-      browse_help_title: "1. Browse cars"
-      browse_help: "Navigate to the Cars page to see all available ads."
-      browse_search_title: "2. Search"
-      search_help: "Use the Search page to find cars."
-      real: "Is this a real marketplace?"
-      real_description: "No, this is a learning project for demonstration purposes."
+    title: "Help & Documentation"
+    getting_started:
+      title: "Getting Started"
+      browse: "1. Browse Cars: Navigate to the Cars page to see all available ads."
+      search: "2. Search: Use the Search page to find cars by specific parameters."
+    faq:
+      title: "FAQ"
+      question: "Is this a real marketplace?"
+      answer: "No, this is a learning project for demonstration purposes only."
+  footer:
+    project_name: "Car Advertisements Web"
+    learning_project: "A Rails learning project"

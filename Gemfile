@@ -2,25 +2,32 @@
 
 source 'https://rubygems.org'
 
-gem 'bootsnap', require: false
+ruby '3.4.7'
+
+gem 'bcrypt', '~> 3.1.17'
 gem 'haml-rails'
-gem 'image_processing', '~> 1.2'
+gem 'pg', '~> 1.5'
+gem 'puma', '>= 6.0'
+gem 'rails', '~> 8.1.2'
+gem 'tzinfo-data', platforms: %i[windows jruby]
+
 gem 'importmap-rails'
 gem 'jbuilder'
-gem 'kamal', require: false
-gem 'pagy', '~> 9.3'
-gem 'pg', '~> 1.1'
 gem 'propshaft'
-gem 'puma', '>= 5.0'
-gem 'rails', '~> 8.1.2'
+gem 'stimulus-rails'
+gem 'tailwindcss-rails'
+gem 'turbo-rails'
+
+gem 'image_processing', '~> 1.2'
+gem 'pagy', '~> 9.3'
+
 gem 'solid_cable'
 gem 'solid_cache'
 gem 'solid_queue'
-gem 'stimulus-rails'
-gem 'tailwindcss-rails'
+
+gem 'bootsnap', require: false
+gem 'kamal', require: false
 gem 'thruster', require: false
-gem 'turbo-rails'
-gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
   gem 'brakeman', require: false
@@ -33,11 +40,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotaterb'
   gem 'html2haml'
   gem 'web-console'
 end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner-active_record'
   gem 'selenium-webdriver'
 end

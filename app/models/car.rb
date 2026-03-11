@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: cars
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  make        :string
+#  model       :string
+#  odometer    :integer
+#  price       :integer
+#  year        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 class Car < ApplicationRecord
   scope :filter_by_make, ->(make) { where('make ILIKE ?', "%#{make}%") }
   scope :filter_by_model, ->(model) { where(model: model) }
